@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fils d'Abraham Ministries — Serviteur Ibrahim</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Source+Sans+3:wght@400;500;600;700&family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#F7F1E3;
+    --parchment-deep:#EFE5CD;
+    --ink:#241B14;
+    --burgundy:#7A1F2B;
+    --burgundy-deep:#5A1620;
+    --gold:#B8892E;
+    --gold-soft:#D9B872;
+    --line:rgba(36,27,20,0.14);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--parchment);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3, .display{font-family:'Merriweather', serif;}
+
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+  img{max-width:100%; display:block;}
+
+  .container{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  .eyebrow{
+    font-family:'Source Sans 3', sans-serif;
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--burgundy);
+  }
+
+  /* ============ HEADER ============ */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(247,241,227,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    max-width:1120px;
+    margin:0 auto;
+  }
+  .brand{
+    font-family:'Merriweather', serif;
+    font-weight:900;
+    font-size:19px;
+    letter-spacing:0.01em;
+  }
+  .brand span{color:var(--burgundy);}
+  nav ul{display:flex; gap:34px;}
+  nav a{
+    font-size:14.5px;
+    font-weight:600;
+    position:relative;
+    padding:4px 0;
+  }
+  nav a::after{
+    content:'';
+    position:absolute;
+    left:0; bottom:0;
+    width:0; height:2px;
+    background:var(--gold);
+    transition:width 0.25s ease;
+  }
+  nav a:hover::after, nav a:focus-visible::after{width:100%;}
+  nav a:focus-visible{outline:2px solid var(--burgundy); outline-offset:4px;}
+  .nav-toggle{display:none;}
+
+  @media (max-width:820px){
+    nav ul{
+      position:fixed;
+      top:64px; right:0;
+      background:var(--parchment);
+      flex-direction:column;
+      width:240px;
+      padding:24px 28px;
+      gap:20px;
+      border-left:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      transform:translateX(100%);
+      transition:transform 0.3s ease;
+    }
+    nav ul.open{transform:translateX(0);}
+    .nav-toggle{
+      display:block;
+      background:none; border:none;
+      font-size:26px;
+      color:var(--ink);
+      cursor:pointer;
+    }
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    padding:140px 0 100px;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% 0%, rgba(184,137,46,0.10), transparent 60%),
+      radial-gradient(ellipse 700px 600px at 100% 30%, rgba(122,31,43,0.08), transparent 55%),
+      var(--parchment);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:60px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 66px);
+    line-height:1.08;
+    font-weight:900;
+    letter-spacing:-0.01em;
+    margin:18px 0 26px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--burgundy);
+  }
+  .hero-sub{
+    font-size:18px;
+    max-width:480px;
+    color:#3d3126;
+    margin-bottom:34px;
+  }
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:14px 28px;
+    font-weight:700;
+    font-size:15px;
+    border-radius:2px;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+    border:1px solid transparent;
+  }
+  .btn:focus-visible{outline:3px solid var(--gold); outline-offset:2px;}
+  .btn-primary{
+    background:var(--burgundy);
+    color:var(--parchment);
+    box-shadow:0 6px 18px rgba(122,31,43,0.25);
+  }
+  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(122,31,43,0.32);}
+  .btn-ghost{
+    border-color:var(--ink);
+    color:var(--ink);
+  }
+  .btn-ghost:hover{background:var(--ink); color:var(--parchment);}
+
+  /* Signature element: unrolling scroll ribbon with verse of the day */
+  .scroll-banner{
+    position:relative;
+    background:linear-gradient(180deg, #fffdf6 0%, var(--parchment-deep) 100%);
+    border:1px solid var(--line);
+    padding:40px 34px 34px;
+    box-shadow:0 22px 50px -18px rgba(36,27,20,0.35);
+    transform-origin:top center;
+    animation:unroll 1.1s cubic-bezier(.22,1,.36,1) both;
+  }
+  .scroll-banner::before, .scroll-banner::after{
+    content:'';
+    position:absolute;
+    left:-10px; right:-10px;
+    height:22px;
+    background:linear-gradient(180deg, var(--gold-soft), var(--gold));
+    border-radius:11px;
+    box-shadow:0 3px 6px rgba(0,0,0,0.2);
+  }
+  .scroll-banner::before{top:-11px;}
+  .scroll-banner::after{bottom:-11px;}
+  @keyframes unroll{
+    0%{transform:scaleY(0.05); opacity:0;}
+    60%{opacity:1;}
+    100%{transform:scaleY(1); opacity:1;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .scroll-banner{animation:none;}
+  }
+  .verse-label{
+    font-size:11.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--gold);
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .verse-label::after{
+    content:'';
+    flex:1;
+    height:1px;
+    background:var(--line);
+  }
+  #verse-text{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:24px;
+    line-height:1.5;
+    color:var(--ink);
+    min-height:110px;
+  }
+  #verse-ref{
+    display:block;
+    margin-top:16px;
+    font-family:'Source Sans 3', sans-serif;
+    font-style:normal;
+    font-weight:700;
+    font-size:14px;
+    color:var(--burgundy);
+  }
+  .verse-refresh{
+    margin-top:22px;
+    font-size:13px;
+    font-weight:600;
+    color:var(--ink);
+    background:none;
+    border:none;
+    border-bottom:1px solid var(--ink);
+    padding:2px 0;
+    cursor:pointer;
+  }
+  .verse-refresh:hover{color:var(--burgundy); border-color:var(--burgundy);}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero{padding-top:120px;}
+  }
+
+  /* ============ SECTION SHELL ============ */
+  section{padding:100px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+  .section-head h2{
+    font-size:clamp(28px, 3.6vw, 40px);
+    margin-top:12px;
+    font-weight:700;
+    line-height:1.15;
+  }
+  .divider{
+    width:64px; height:3px;
+    background:var(--gold);
+    margin:18px 0 0;
+  }
+
+  /* ============ A PROPOS ============ */
+  .about{background:var(--parchment-deep);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:64px;
+    align-items:start;
+  }
+  .portrait-frame{
+    aspect-ratio:4/5;
+    background:
+      linear-gradient(160deg, #8a2531, #5A1620);
+    border-radius:4px;
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    padding:28px;
+    box-shadow:0 30px 60px -24px rgba(36,27,20,0.5);
+  }
+  .portrait-frame::before{
+    content:'';
+    position:absolute; inset:14px;
+    border:1px solid rgba(217,184,114,0.5);
+    pointer-events:none;
+  }
+  .portrait-tag{
+    color:var(--parchment);
+    font-family:'Merriweather', serif;
+    font-size:20px;
+    font-style:italic;
+  }
+  .about-body p{margin-bottom:20px; font-size:16.5px; color:#3d3126;}
+  .about-body p:first-of-type::first-letter{
+    font-family:'Merriweather', serif;
+    font-size:52px;
+    font-weight:900;
+    color:var(--burgundy);
+    float:left;
+    line-height:0.8;
+    margin:8px 8px 0 0;
+  }
+  .values-row{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    margin-top:36px;
+  }
+  .value-card{
+    border-top:2px solid var(--burgundy);
+    padding-top:14px;
+  }
+  .value-card h4{font-family:'Merriweather', serif; font-size:16px; margin-bottom:6px;}
+  .value-card p{font-size:14px; color:#54473a; margin:0;}
+
+  @media (max-width:860px){
+    .about-grid{grid-template-columns:1fr;}
+    .values-row{grid-template-columns:1fr;}
+  }
+
+  /* ============ PREDICATIONS ============ */
+  .predications-head-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .filter-row{display:flex; gap:10px; flex-wrap:wrap;}
+  .filter-btn{
+    font-size:13px;
+    font-weight:600;
+    padding:8px 16px;
+    border:1px solid var(--ink);
+    border-radius:20px;
+    background:transparent;
+    cursor:pointer;
+    transition:all 0.2s ease;
+  }
+  .filter-btn.active, .filter-btn:hover{
+    background:var(--burgundy);
+    color:var(--parchment);
+    border-color:var(--burgundy);
+  }
+  .filter-btn:focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
+
+  .cards-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    margin-top:44px;
+  }
+  .msg-card{
+    background:#fffdf6;
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .msg-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 24px 40px -20px rgba(36,27,20,0.3);
+  }
+  .msg-thumb{
+    aspect-ratio:16/9;
+    background:linear-gradient(135deg, var(--burgundy) 0%, #3a1015 100%);
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .msg-thumb.video::after{
+    content:'';
+    width:0; height:0;
+    border-style:solid;
+    border-width:11px 0 11px 18px;
+    border-color:transparent transparent transparent var(--parchment);
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+  }
+  .msg-thumb.audio{background:linear-gradient(135deg, var(--gold) 0%, #8a651e 100%);}
+  .msg-thumb.text{background:linear-gradient(135deg, #4a3d2f 0%, #241B14 100%);}
+  .msg-body{padding:22px 24px 26px;}
+  .msg-meta{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--burgundy);
+    margin-bottom:10px;
+  }
+  .msg-meta .dot{color:var(--line);}
+  .msg-body h3{font-size:19px; line-height:1.3; margin-bottom:8px;}
+  .msg-body p{font-size:14.5px; color:#54473a;}
+  .msg-link{
+    display:inline-block;
+    margin-top:14px;
+    font-size:13.5px;
+    font-weight:700;
+    border-bottom:1px solid var(--gold);
+  }
+
+  @media (max-width:980px){.cards-grid{grid-template-columns:1fr 1fr;}}
+  @media (max-width:640px){.cards-grid{grid-template-columns:1fr;}}
+
+  /* ============ DONS ============ */
+  .dons{
+    background:var(--ink);
+    color:var(--parchment);
+  }
+  .dons .eyebrow{color:var(--gold-soft);}
+  .dons .section-head p{color:#d8cdb9;}
+  .dons-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .don-card{
+    background:rgba(247,241,227,0.05);
+    border:1px solid rgba(247,241,227,0.16);
+    padding:30px 26px;
+    border-radius:4px;
+  }
+  .don-card .amount{
+    font-family:'Merriweather', serif;
+    font-size:15px;
+    color:var(--gold-soft);
+    margin-bottom:10px;
+    letter-spacing:0.04em;
+  }
+  .don-card h4{font-size:19px; margin-bottom:10px;}
+  .don-card p{font-size:14px; color:#c9bda6; margin-bottom:20px;}
+  .don-btn{
+    display:inline-block;
+    width:100%;
+    text-align:center;
+    padding:12px;
+    border:1px solid var(--gold-soft);
+    color:var(--gold-soft);
+    font-weight:700;
+    font-size:14px;
+    border-radius:2px;
+    transition:all 0.2s ease;
+  }
+  .don-btn:hover{background:var(--gold-soft); color:var(--ink);}
+  .don-verse{
+    margin-top:50px;
+    text-align:center;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:22px;
+    color:#e7dcc4;
+    max-width:640px;
+    margin-left:auto; margin-right:auto;
+  }
+  @media (max-width:820px){.dons-grid{grid-template-columns:1fr;}}
+
+  /* ============ CONTACT ============ */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+  }
+  .contact-info h3{font-size:20px; margin-bottom:6px;}
+  .contact-info p{font-size:15px; color:#54473a; margin-bottom:26px;}
+  .info-line{
+    display:flex; gap:14px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .info-line strong{display:block; font-size:14px;}
+  .info-line span{font-size:14px; color:#54473a;}
+  .social-row{display:flex; gap:14px; margin-top:26px;}
+  .social-row a{
+    width:40px; height:40px;
+    border:1px solid var(--ink);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:13px; font-weight:700;
+    transition:all 0.2s ease;
+  }
+  .social-row a:hover{background:var(--burgundy); border-color:var(--burgundy); color:var(--parchment);}
+
+  form{display:flex; flex-direction:column; gap:18px;}
+  label{font-size:13px; font-weight:700; letter-spacing:0.03em; text-transform:uppercase; margin-bottom:6px; display:block;}
+  input, textarea{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid var(--line);
+    background:#fffdf6;
+    border-radius:2px;
+    font-family:inherit;
+    font-size:15px;
+    color:var(--ink);
+  }
+  input:focus, textarea:focus{outline:2px solid var(--gold); outline-offset:1px; border-color:var(--gold);}
+  textarea{resize:vertical; min-height:120px;}
+  .form-status{font-size:14px; font-weight:600; min-height:20px;}
+  .form-status.ok{color:#2f6b3a;}
+  .form-status.err{color:#8a2531;}
+  .btn[disabled]{opacity:0.6; cursor:not-allowed; transform:none !important;}
+
+  @media (max-width:860px){.contact-grid{grid-template-columns:1fr;}}
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:var(--burgundy-deep);
+    color:#e9d9d2;
+    padding:50px 0 30px;
+    font-size:14px;
+  }
+  .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:24px;
+    padding-bottom:26px;
+    border-bottom:1px solid rgba(255,255,255,0.14);
+  }
+  .footer-brand{font-family:'Merriweather', serif; font-size:18px; color:var(--parchment);}
+  footer ul{display:flex; gap:22px; flex-wrap:wrap;}
+  footer a:hover{color:var(--gold-soft);}
+  .footer-bottom{
+    padding-top:22px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    color:#c9a8a2;
+    font-size:13px;
+  }
+
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal.in-view{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="#" class="brand">Fils d'<span>Abraham</span> Ministries</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    <nav>
+      <ul id="navMenu">
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#predications">Prédications</a></li>
+        <li><a href="#dons">Dons</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" id="accueil">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Serviteur Ibrahim — Fils d'Abraham Ministries</p>
+        <h1>Porter la <em>Bonne Nouvelle</em> à toutes les nations</h1>
+        <p class="hero-sub">Un ministère consacré à l'enseignement de la Parole, à l'évangélisation digitale et à l'édification des croyants, où qu'ils se trouvent.</p>
+        <div class="cta-row">
+          <a href="#predications" class="btn btn-primary">Écouter les prédications</a>
+          <a href="#contact" class="btn btn-ghost">Nous rejoindre en live</a>
+        </div>
+      </div>
+
+      <div class="scroll-banner">
+        <p class="verse-label">Verset du jour</p>
+        <p class="display" id="verse-text">Chargement…</p>
+        <span id="verse-ref"></span>
+        <button class="verse-refresh" id="verseRefresh">Un autre verset →</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- A PROPOS -->
+  <section class="about" id="apropos">
+    <div class="container">
+      <div class="about-grid">
+        <div class="reveal">
+          <div class="portrait-frame">
+            <span class="portrait-tag">« Va, je t'envoie » — Exode 3:10</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <p class="eyebrow">À propos du ministère</p>
+          <h2>Une voix pour cette génération</h2>
+          <div class="divider"></div>
+          <div class="about-body" style="margin-top:28px;">
+            <p>Fils d'Abraham Ministries est né d'un appel clair : rappeler à cette génération la promesse faite à Abraham, et annoncer sans compromis l'Évangile de Jésus-Christ. Sous la conduite de Serviteur Ibrahim, le ministère s'est développé comme un espace d'enseignement biblique rigoureux et d'évangélisation vivante.</p>
+            <p>À travers les prédications, les publications quotidiennes et les rencontres en direct, ce ministère cherche à nourrir la foi, corriger avec amour, encourager les cœurs fatigués et conduire les âmes à la repentance et à la vie nouvelle en Christ.</p>
+          </div>
+          <div class="values-row">
+            <div class="value-card"><h4>Fidélité à l'Écriture</h4><p>Chaque enseignement s'ancre dans la Parole, sans dilution.</p></div>
+            <div class="value-card"><h4>Présence digitale</h4><p>Un ministère qui rencontre les gens là où ils sont : en ligne.</p></div>
+            <div class="value-card"><h4>Vie de prière</h4><p>Un service porté par l'intercession et la dépendance à l'Esprit.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREDICATIONS -->
+  <section id="predications">
+    <div class="container">
+      <div class="predications-head-row">
+        <div class="section-head" style="margin-bottom:0;">
+          <p class="eyebrow">Ressources</p>
+          <h2>Prédications &amp; enseignements</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="filter-row" role="group" aria-label="Filtrer par format">
+          <button class="filter-btn active" data-filter="all">Tout</button>
+          <button class="filter-btn" data-filter="video">Vidéos</button>
+          <button class="filter-btn" data-filter="audio">Audio</button>
+          <button class="filter-btn" data-filter="text">Articles</button>
+        </div>
+      </div>
+
+      <div class="cards-grid" id="cardsGrid">
+        <!-- injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- DONS -->
+  <section class="dons" id="dons">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Semer dans cette œuvre</p>
+        <h2>Soutenir le ministère</h2>
+        <p>« Que chacun donne comme il l'a résolu dans son cœur, sans tristesse ni contrainte ; car Dieu aime celui qui donne avec joie. » — 2 Corinthiens 9:7</p>
+        <div class="divider" style="background:var(--gold-soft);"></div>
+      </div>
+      <div class="dons-grid">
+        <div class="don-card">
+          <p class="amount">Semence ponctuelle</p>
+          <h4>Un don unique</h4>
+          <p>Contribuez librement à la production de contenus, à l'évangélisation en ligne et aux frais du ministère.</p>
+          <a href="#contact" class="don-btn">Faire un don</a>
+        </div>
+        <div class="don-card">
+          <p class="amount">Partenariat mensuel</p>
+          <h4>Devenir partenaire</h4>
+          <p>Engagez-vous à soutenir régulièrement la vision et la diffusion de la Parole chaque mois.</p>
+          <a href="#contact" class="don-btn">Devenir partenaire</a>
+        </div>
+        <div class="don-card">
+          <p class="amount">Offrande spéciale</p>
+          <h4>Projet en cours</h4>
+          <p>Participez à un projet ponctuel : production vidéo, équipement de studio ou campagne d'évangélisation.</p>
+          <a href="#contact" class="don-btn">En savoir plus</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container contact-grid">
+      <div class="contact-info reveal">
+        <p class="eyebrow">Restons en contact</p>
+        <h2 style="font-size:32px; margin:12px 0 18px;">Écrivez-nous</h2>
+        <p>Une question, un besoin de prière, une invitation à prêcher ? Le ministère répond à chaque message avec attention.</p>
+        <div class="info-line"><strong style="min-width:90px;">Email</strong><span>contact@filsdabraham-ministries.org</span></div>
+        <div class="info-line"><strong style="min-width:90px;">Live</strong><span>Chaque semaine sur Facebook &amp; YouTube</span></div>
+        <div class="info-line"><strong style="min-width:90px;">Prière</strong><span>Envoyez vos sujets de prière via le formulaire</span></div>
+        <div class="social-row">
+          <a href="#" aria-label="Facebook">Fb</a>
+          <a href="#" aria-label="YouTube">Yt</a>
+          <a href="#" aria-label="Instagram">Ig</a>
+          <a href="#" aria-label="TikTok">Tk</a>
+        </div>
+      </div>
+
+      <!-- Formulaire connecté à Formspree -->
+      <form id="contactForm" class="reveal" action="https://formspree.io/f/xvzeaznb" method="POST">
+        <div>
+          <label for="name">Nom complet</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="email">Adresse email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="subject">Sujet</label>
+          <input type="text" id="subject" name="subject" placeholder="Sujet de prière, invitation, question…">
+        </div>
+        <input type="hidden" name="_subject" value="Nouveau message — Fils d'Abraham Ministries">
+        <div style="display:none;" aria-hidden="true">
+          <label for="_gotcha">Ne pas remplir</label>
+          <input type="text" id="_gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="formSubmit" style="align-self:flex-start;">Envoyer le message</button>
+        <p class="form-status" id="formStatus" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <span class="footer-brand">Fils d'Abraham Ministries</span>
+      <ul>
+        <li><a href="#apropos">À propos</a></li>
+        <li><a href="#predications">Prédications</a></li>
+        <li><a href="#dons">Dons</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Fils d'Abraham Ministries — Serviteur Ibrahim</span>
+      <span>« Va, je t'envoie. » — Exode 3:10</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ---- Mobile nav toggle ----
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+  navToggle.addEventListener('click', () => {
+    const isOpen = navMenu.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+  });
+  navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navMenu.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  // ---- Verse of the day (signature element) ----
+  const verses = [
+    { text: "Car je connais les projets que j'ai formés sur vous, dit l'Éternel, projets de paix et non de malheur, afin de vous donner un avenir et de l'espérance.", ref: "Jérémie 29:11" },
+    { text: "Ne crains rien, car je suis avec toi ; ne prends pas d'inquiétude, car je suis ton Dieu ; je te fortifie, je viens à ton secours.", ref: "Ésaïe 41:10" },
+    { text: "Je puis tout par celui qui me fortifie.", ref: "Philippiens 4:13" },
+    { text: "L'Éternel est mon berger : je ne manquerai de rien.", ref: "Psaume 23:1" },
+    { text: "Car Dieu a tant aimé le monde qu'il a donné son Fils unique, afin que quiconque croit en lui ne périsse point, mais qu'il ait la vie éternelle.", ref: "Jean 3:16" },
+    { text: "Recommande à l'Éternel tes œuvres, et tes projets réussiront.", ref: "Proverbes 16:3" },
+    { text: "Approchez-vous de Dieu, et il s'approchera de vous.", ref: "Jacques 4:8" },
+    { text: "Venez à moi, vous tous qui êtes fatigués et chargés, et je vous donnerai du repos.", ref: "Matthieu 11:28" }
+  ];
+  let lastVerseIdx = -1;
+  function showVerse(){
+    let idx;
+    do { idx = Math.floor(Math.random() * verses.length); } while (idx === lastVerseIdx && verses.length > 1);
+    lastVerseIdx = idx;
+    const v = verses[idx];
+    document.getElementById('verse-text').textContent = "« " + v.text + " »";
+    document.getElementById('verse-ref').textContent = v.ref;
+  }
+  showVerse();
+  document.getElementById('verseRefresh').addEventListener('click', showVerse);
+
+  // ---- Prédications content ----
+  const messages = [
+    { type:'video', title:"La promesse d'Abraham pour aujourd'hui", desc:"Un enseignement sur la fidélité de Dieu à travers les générations.", meta:"Prédication · 42 min" },
+    { type:'audio', title:"Marcher par la foi, non par la vue", desc:"Une méditation sur 2 Corinthiens 5:7 et la confiance en Dieu.", meta:"Audio · 28 min" },
+    { type:'text', title:"Pourquoi Dieu permet les épreuves", desc:"Un article sur le sens biblique de la souffrance et de la persévérance.", meta:"Article · 6 min de lecture" },
+    { type:'video', title:"Le Saint-Esprit, notre consolateur", desc:"Enseignement en direct sur le rôle de l'Esprit dans la vie du croyant.", meta:"Live rediffusion · 55 min" },
+    { type:'audio', title:"Prière et jeûne : les clés du réveil", desc:"Comment bâtir une vie de prière qui transforme.", meta:"Audio · 34 min" },
+    { type:'text', title:"Le salut par la grâce seule", desc:"Retour aux fondements de l'Évangile selon Éphésiens 2:8-9.", meta:"Article · 5 min de lecture" }
+  ];
+  const grid = document.getElementById('cardsGrid');
+  function renderCards(filter){
+    grid.innerHTML = '';
+    messages.filter(m => filter === 'all' || m.type === filter).forEach(m => {
+      const card = document.createElement('article');
+      card.className = 'msg-card reveal in-view';
+      card.innerHTML = `
+        <div class="msg-thumb ${m.type}"></div>
+        <div class="msg-body">
+          <div class="msg-meta">${m.type === 'video' ? 'Vidéo' : m.type === 'audio' ? 'Audio' : 'Article'} <span class="dot">·</span> ${m.meta}</div>
+          <h3>${m.title}</h3>
+          <p>${m.desc}</p>
+          <a href="#" class="msg-link">Consulter →</a>
+        </div>`;
+      grid.appendChild(card);
+    });
+  }
+  renderCards('all');
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderCards(btn.dataset.filter);
+    });
+  });
+
+  // ---- Contact form (envoi réel via Formspree) ----
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  const submitBtn = document.getElementById('formSubmit');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.classList.remove('ok', 'err');
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours…';
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        status.textContent = 'Message envoyé. Le ministère vous répondra bientôt.';
+        status.classList.add('ok');
+        form.reset();
+      } else {
+        status.textContent = "L'envoi a échoué. Réessaie ou écris directement par email.";
+        status.classList.add('err');
+      }
+    } catch (err) {
+      status.textContent = "Connexion impossible. Vérifie ta connexion et réessaie.";
+      status.classList.add('err');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer le message';
+    }
+  });
+
+  // ---- Scroll reveal ----
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('in-view');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

@@ -419,6 +419,25 @@
   @media (max-width:980px){.cards-grid{grid-template-columns:1fr 1fr;}}
   @media (max-width:640px){.cards-grid{grid-template-columns:1fr;}}
 
+  /* ============ ENSEIGNEMENTS ============ */
+  .teachings{background:#fffdf6;}
+  .teachings-intro{max-width:700px;color:#54473a;font-size:16px;margin-top:18px;}
+  .teaching-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:42px;}
+  .teaching-card{background:var(--parchment);border:1px solid var(--line);border-top:3px solid var(--gold);padding:26px 24px;border-radius:3px;}
+  .teaching-card .eyebrow{font-size:11px;}
+  .teaching-card h3{font-size:20px;line-height:1.3;margin:12px 0;}
+  .teaching-card p{font-size:14.5px;color:#54473a;margin-bottom:14px;}
+  .teaching-card details{border-top:1px solid var(--line);padding-top:14px;margin-top:16px;}
+  .teaching-card summary{cursor:pointer;color:var(--burgundy);font-weight:700;font-size:14px;}
+  .teaching-card summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+  .teaching-card .lesson-body{padding-top:14px;color:#3d3126;font-size:14px;}
+  .teaching-card .lesson-body h4{font-family:'Merriweather',serif;font-size:15px;margin:14px 0 6px;}
+  .teaching-card .lesson-body p{margin:0 0 10px;}
+  .teaching-card .lesson-body ul{list-style:disc;padding-left:20px;margin:6px 0 12px;}
+  .teaching-card .lesson-body li{margin:4px 0;}
+  @media(max-width:900px){.teaching-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:620px){.teaching-grid{grid-template-columns:1fr;}}
+
   /* ============ DONS ============ */
   .dons{
     background:var(--ink);
@@ -563,6 +582,7 @@
       <ul id="navMenu">
         <li><a href="#apropos">À propos</a></li>
         <li><a href="#predications">Prédications</a></li>
+        <li><a href="#enseignements">Enseignements</a></li>
         <li><a href="#dons">Dons</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -640,6 +660,80 @@
 
       <div class="cards-grid" id="cardsGrid">
         <!-- injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ENSEIGNEMENTS BIBLIQUES -->
+  <section class="teachings" id="enseignements">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Grandir dans la Parole</p>
+        <h2>Bibliothèque d'enseignements bibliques</h2>
+        <div class="divider"></div>
+        <p class="teachings-intro">Des repères bibliques pour approfondir la foi, mettre la Parole en pratique et marcher chaque jour avec Jésus-Christ. Ouvrez un enseignement pour lire son contenu.</p>
+      </div>
+      <div class="teaching-grid">
+        <article class="teaching-card">
+          <p class="eyebrow">Vie chrétienne · Romains 12:1-2</p>
+          <h3>La sanctification : marcher chaque jour avec Dieu</h3>
+          <p>La sanctification est une vie mise à part pour Dieu, transformée progressivement par sa Parole et conduite par le Saint-Esprit.</p>
+          <details>
+            <summary>Lire l'enseignement</summary>
+            <div class="lesson-body">
+              <h4>1. Une réponse à la grâce de Dieu</h4>
+              <p>Dans Romains 12:1, Paul invite les croyants à offrir leur vie à Dieu. La sainteté n'est pas un moyen d'acheter le salut : elle est une réponse reconnaissante à la miséricorde reçue en Jésus-Christ.</p>
+              <h4>2. Un renouvellement intérieur</h4>
+              <p>Romains 12:2 appelle à ne pas prendre la forme du siècle présent, mais à être transformés par le renouvellement de l'intelligence. La Parole nous apprend à discerner ce qui plaît à Dieu.</p>
+              <h4>3. Une marche quotidienne</h4>
+              <p>La sanctification se manifeste dans nos choix, nos paroles, nos relations, notre intégrité et notre amour du prochain. Nous dépendons de Dieu et apprenons à lui obéir jour après jour (Galates 5:16-25).</p>
+              <h4>À mettre en pratique</h4>
+              <ul><li>Lire un passage biblique et le méditer chaque jour.</li><li>Confesser à Dieu ce qui doit changer et rechercher son aide.</li><li>Choisir concrètement l'obéissance, la vérité et l'amour.</li></ul>
+              <p><strong>Pour méditer :</strong> Quel domaine de ma vie ai-je besoin de remettre à Dieu aujourd'hui ?</p>
+              <p><strong>Verset à retenir :</strong> « Soyez saints, car je suis saint. » — 1 Pierre 1:16</p>
+            </div>
+          </details>
+        </article>
+        <article class="teaching-card">
+          <p class="eyebrow">Fondements de la foi · Éphésiens 2:8-10</p>
+          <h3>Le salut : une grâce reçue par la foi</h3>
+          <p>Le salut est un don de Dieu en Jésus-Christ. Il ne s'obtient pas par nos mérites, mais il produit une vie nouvelle et des œuvres bonnes.</p>
+          <details>
+            <summary>Lire l'enseignement</summary>
+            <div class="lesson-body">
+              <h4>1. Le salut vient de la grâce</h4>
+              <p>Éphésiens 2:8-9 enseigne que nous sommes sauvés par la grâce, au moyen de la foi. Ce don ne vient pas de nos œuvres : personne ne peut se glorifier devant Dieu.</p>
+              <h4>2. Jésus-Christ est au centre</h4>
+              <p>La bonne nouvelle annonce que Jésus est mort pour nos péchés et qu'il est ressuscité (1 Corinthiens 15:3-4). Nous sommes appelés à nous repentir et à placer notre confiance en lui (Marc 1:15).</p>
+              <h4>3. La foi porte du fruit</h4>
+              <p>Éphésiens 2:10 précise que nous sommes créés en Jésus-Christ pour de bonnes œuvres. Ces œuvres ne sont pas le prix du salut ; elles en sont le fruit dans une vie renouvelée.</p>
+              <h4>À mettre en pratique</h4>
+              <ul><li>Place ta confiance en Jésus plutôt qu'en tes propres mérites.</li><li>Remercie Dieu pour sa grâce et partage cette espérance.</li><li>Demande-lui de faire grandir en toi l'amour et l'obéissance.</li></ul>
+              <p><strong>Pour méditer :</strong> Est-ce que je cherche à mériter l'amour de Dieu ou est-ce que je vis en réponse à sa grâce ?</p>
+              <p><strong>Verset à retenir :</strong> Éphésiens 2:8-10</p>
+            </div>
+          </details>
+        </article>
+        <article class="teaching-card">
+          <p class="eyebrow">Prière · Matthieu 6:5-13</p>
+          <h3>La prière : développer une communion sincère avec Dieu</h3>
+          <p>La prière n'est pas une formule magique : c'est une relation avec le Père, vécue avec confiance, vérité, persévérance et soumission à sa volonté.</p>
+          <details>
+            <summary>Lire l'enseignement</summary>
+            <div class="lesson-body">
+              <h4>1. Prier avec sincérité</h4>
+              <p>Dans Matthieu 6:5-6, Jésus enseigne à rechercher Dieu sans jouer un rôle devant les autres. Le Père voit dans le secret et accueille celui qui vient à lui avec un cœur vrai.</p>
+              <h4>2. Prier selon les priorités de Dieu</h4>
+              <p>Le modèle donné par Jésus commence par le nom de Dieu, son règne et sa volonté (Matthieu 6:9-10). La prière nous recentre sur Dieu avant de présenter nos besoins.</p>
+              <h4>3. Persévérer avec confiance</h4>
+              <p>Jésus nous apprend à demander le pain quotidien, le pardon et la délivrance du mal. Philippiens 4:6-7 nous encourage à présenter nos demandes à Dieu avec reconnaissance.</p>
+              <h4>Un exemple simple</h4>
+              <ul><li>Adoration : Seigneur, tu es bon et fidèle.</li><li>Confession : montre-moi ce que je dois reconnaître devant toi.</li><li>Requête : présente mes besoins et ceux des autres.</li><li>Reconnaissance : merci pour ta présence et ta grâce.</li></ul>
+              <p><strong>Pour méditer :</strong> Est-ce que je prends chaque jour un temps pour écouter Dieu dans sa Parole et lui parler avec sincérité ?</p>
+              <p><strong>Verset à retenir :</strong> 1 Thessaloniciens 5:17</p>
+            </div>
+          </details>
+        </article>
       </div>
     </div>
   </section>
@@ -732,6 +826,7 @@
       <ul>
         <li><a href="#apropos">À propos</a></li>
         <li><a href="#predications">Prédications</a></li>
+        <li><a href="#enseignements">Enseignements</a></li>
         <li><a href="#dons">Dons</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
